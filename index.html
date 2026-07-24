@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quetta Chai Khanna & Restaurant</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1c1c1c;
+            --bg-glass: rgba(18, 18, 18, 0.92);
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa820a;
+            --text-main: #f8fafc;
+            --text-muted: #a1a1aa;
+            --border-glow: rgba(212, 175, 55, 0.25);
+            --border-subtle: #27272a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif-font {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .urdu-text {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            direction: rtl;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-glow);
+            padding: 10px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .brand-logo-img {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid var(--gold-primary);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .brand-logo:hover .brand-logo-img {
+            transform: scale(1.05);
+        }
+
+        .brand-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1.2;
+        }
+
+        .brand-subtitle {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--gold-primary);
+        }
+
+        .order-btn-nav {
+            background: var(--gold-primary);
+            color: #000;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .order-btn-nav:hover {
+            background: var(--gold-light);
+        }
+
+        /* --- PAGE VIEWS --- */
+        .page-view {
+            display: none;
+            min-height: 100vh;
+            padding-top: 75px;
+        }
+
+        .page-view.active-page {
+            display: block;
+        }
+
+        /* --- HOME PAGE SECTIONS --- */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.65) 0%, rgba(18, 18, 18, 0.95) 100%),
+                url('https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+
+        .hero-logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold-primary);
+            margin-bottom: 20px;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.3rem, 5vw, 4.2rem);
+            line-height: 1.1;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .outline-btn {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--text-main);
+            padding: 12px 32px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .outline-btn:hover {
+            background: var(--gold-primary);
+            border-color: var(--gold-primary);
+            color: #000;
+        }
+
+        .feature-banner {
+            position: relative;
+            padding: 90px 5%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.65);
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+        }
+
+        .banner-content h2 {
+            font-size: 3rem;
+            color: var(--gold-light);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .banner-content p {
+            color: #e4e4e7;
+            margin-bottom: 25px;
+            font-size: 1rem;
+        }
+
+        .quote-section {
+            text-align: center;
+            padding: 70px 20px;
+            background: #18181b;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .quote-section blockquote {
+            font-size: 1.8rem;
+            color: var(--gold-light);
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .insta-section {
+            padding: 60px 20px;
+            text-align: center;
+            background: var(--bg-dark);
+        }
+
+        .insta-section h3 {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+        }
+
+        /* --- FOOTER NAV --- */
+        .screenshot-footer {
+            background: #121212;
+            padding: 60px 20px 80px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .footer-nav-item {
+            color: #ffffff;
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            font-size: 1.25rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            width: fit-content;
+        }
+
+        .footer-nav-item:hover {
+            color: var(--gold-primary);
+        }
+
+        /* --- MENU PAGE SECTIONS --- */
+        .menu-container {
+            padding: 40px 5% 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .menu-header h2 {
+            font-size: 3.5rem;
+            color: var(--gold-primary);
+        }
+
+        .menu-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 30px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active,
+        .tab-btn:hover {
+            background: var(--gold-primary);
+            color: #000;
+            border-color: var(--gold-primary);
+            font-weight: 600;
+        }
+
+        .category-title {
+            font-size: 2.2rem;
+            color: var(--gold-light);
+            border-bottom: 1px solid var(--border-glow);
+            padding-bottom: 8px;
+            margin: 40px 0 25px 0;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .card-title-en {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .card-title-ur {
+            color: var(--gold-primary);
+            font-size: 0.95rem;
+            text-align: right;
+        }
+
+        .variant-selector select {
+            width: 100%;
+            padding: 8px 12px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-subtle);
+            color: #fff;
+            border-radius: 6px;
+            outline: none;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gold-primary);
+        }
+
+        .add-cart-btn {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(212, 175, 55, 0.02) 100%);
+            color: var(--gold-light);
+            border: 1px solid var(--gold-primary);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(4px);
+        }
+
+        .add-cart-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .add-cart-btn:hover {
+            background: var(--gold-primary);
+            color: #000;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.45);
+            transform: translateY(-2px);
+            font-weight: 700;
+        }
+
+        .add-cart-btn:hover::before {
+            left: 100%;
+        }
+
+        .add-cart-btn:active {
+            transform: translateY(0) scale(0.96);
+        }
+
+        /* --- CART BAR & MODAL --- */
+        .cart-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--bg-glass);
+            backdrop-filter: blur(15px);
+            border-top: 1px solid var(--border-glow);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .checkout-btn {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px 26px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.35);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .checkout-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+            background: linear-gradient(135deg, #28e16d 0%, #149a8b 100%);
+        }
+
+        .checkout-btn:hover::after {
+            opacity: 1;
+        }
+
+        .checkout-btn:active {
+            transform: translateY(-1px) scale(0.98);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-body {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 25px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 10px;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .cart-item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .qty-btn {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-subtle);
+            color: #fff;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .input-field {
+            margin-top: 15px;
+        }
+
+        .input-field label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+
+        .input-field input,
+        .input-field textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-subtle);
+            color: white;
+            outline: none;
+        }
+
+        .info-section {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .info-section h3 {
+            font-size: 2.2rem;
+            color: var(--gold-primary);
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV BAR -->
+    <nav>
+        <div class="brand-logo" onclick="navigateTo('home')">
+            <img src="https://raw.githubusercontent.com/hamzazahid-dev/car-game/main/1784895461420.png" alt="Quetta Chai Khanna Logo" class="brand-logo-img">
+            <div>
+                <span class="brand-title">Quetta</span>
+                <span class="brand-subtitle">Chai Khanna & Restaurant</span>
+            </div>
+        </div>
+        <div class="nav-links">
+            <span class="nav-link active" id="nav-home" onclick="navigateTo('home')">Home</span>
+            <span class="nav-link" id="nav-menu" onclick="navigateTo('menu')">Menu</span>
+            <span class="nav-link" id="nav-drinks" onclick="navigateTo('drinks')">Drinks</span>
+            <button class="order-btn-nav" onclick="navigateTo('menu')">Order Now</button>
+        </div>
+    </nav>
+
+    <!-- ================= PAGE 1: HOME ================= -->
+    <div id="page-home" class="page-view active-page">
+        <section class="hero">
+            <img src="https://raw.githubusercontent.com/hamzazahid-dev/car-game/main/1784895461420.png" alt="Quetta Chai Khanna Logo" class="hero-logo">
+            <h1>Welcome to Quetta Chai Khanna & Restaurant</h1>
+            <p>Discover the authentic tastes of tradition in our specially curated teas and breakfast delights, steeped in flavour, rooted in heritage, and crafted to start your day in the most delightful way.</p>
+            <button class="outline-btn" onclick="navigateTo('menu')">Explore Menu</button>
+        </section>
+
+        <section class="feature-banner" style="background-image: url('https://images.unsplash.com/photo-1594212699903-ec8a3eca50f6?auto=format&fit=crop&w=1200&q=80');">
+            <div class="banner-content">
+                <h2>NEW TEAS<br>NEW STORIES</h2>
+                <p>Specialty handcrafted doodh patti, zafrani chai, and dry fruit infusions brewed to perfection.</p>
+                <button class="outline-btn" onclick="navigateTo('drinks')">Explore Drinks</button>
+            </div>
+        </section>
+
+        <section class="feature-banner" id="featured-section" style="background-image: url('https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1200&q=80');">
+            <div class="banner-content">
+                <h2>Featured Dishes</h2>
+                <p>Discover the soul of Pakistani cuisine with slow-cooked Namkeen Rosh, Mutton Karahi, and rich stuffed parathas.</p>
+                <button class="outline-btn" onclick="navigateTo('menu')">Order Now</button>
+            </div>
+        </section>
+
+        <section class="quote-section" id="reasons-section">
+            <blockquote>"An empty plate at Quetta Chai Khanna is the promise of a flavourful journey yet to unfold."</blockquote>
+        </section>
+
+        <section class="info-section" id="promos-section">
+            <h3>Special Promos & Offers</h3>
+            <p style="color: var(--text-muted);">Enjoy 24/7 Free Home Delivery across all local orders. Contact us directly at 0301 6999013 or 0333 1184608 for bulk party and event catering orders.</p>
+        </section>
+
+        <section class="info-section" id="about-section">
+            <h3>About Us</h3>
+            <p style="color: var(--text-muted);">Est. 1978 — Quetta Chai Khanna & Restaurant brings traditional dhabba-style chai and authentic Pakistani cuisine into a modern dining experience. Prepared fresh 24 hours a day with pure ingredients.</p>
+        </section>
+
+        <section class="info-section" id="franchise-section">
+            <h3>Franchising Opportunities</h3>
+            <p style="color: var(--text-muted);">Interested in bringing the authentic Quetta Chai Khanna experience to your city? Partner with us for franchise inquiries and expansion.</p>
+        </section>
+
+        <section class="insta-section">
+            <button class="outline-btn" style="border-radius:20px; font-size:0.8rem; margin-bottom:15px;">Find out more</button>
+            <h3>Insta-Moments: Capturing the Quetta Chai Khanna Experience in Frames</h3>
+        </section>
+
+        <footer class="screenshot-footer">
+            <div class="footer-nav-list">
+                <a class="footer-nav-item" onclick="navigateTo('home')">Home</a>
+                <a class="footer-nav-item" onclick="scrollToSection('reasons-section')">Reasons to love us</a>
+                <a class="footer-nav-item" onclick="navigateTo('menu')">Menu</a>
+                <a class="footer-nav-item" onclick="navigateTo('drinks')">Drinks Menu</a>
+                <a class="footer-nav-item" onclick="scrollToSection('featured-section')">Featured dishes</a>
+                <a class="footer-nav-item" onclick="scrollToSection('promos-section')">Promos</a>
+                <a class="footer-nav-item" onclick="scrollToSection('about-section')">About Us</a>
+                <a class="footer-nav-item" onclick="scrollToSection('franchise-section')">Franchising</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- ================= PAGE 2: MENU ================= -->
+    <div id="page-menu" class="page-view">
+        <main class="menu-container">
+            <div class="menu-header">
+                <h2 class="serif-font">Our Complete Menu</h2>
+                <p style="color: var(--text-muted);">Select your items and order instantly via WhatsApp</p>
+            </div>
+
+            <div class="menu-controls">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search menu..." oninput="renderMenu()">
+                </div>
+                <div class="category-tabs">
+                    <button class="tab-btn active" id="tab-All" onclick="filterCategory('All', this)">All Items</button>
+                    <button class="tab-btn" id="tab-Chatpata" onclick="filterCategory('Chatpata Paratha', this)">Chatpata Paratha</button>
+                    <button class="tab-btn" id="tab-Meetha" onclick="filterCategory('Meetha Paratha', this)">Meetha Paratha</button>
+                    <button class="tab-btn" id="tab-Tea" onclick="filterCategory('Tea', this)">Tea & Drinks</button>
+                    <button class="tab-btn" id="tab-Pakistani" onclick="filterCategory('Pakistani Foods', this)">Pakistani Foods</button>
+                    <!-- Fruit & Vegetables Tab - Clearly visible -->
+                    <button class="tab-btn" id="tab-FruitVeg" onclick="filterCategory('Fruit & Vegetables', this)">Fruit & Vegetables</button>
+                </div>
+            </div>
+
+            <div id="menuContainer"></div>
+        </main>
+    </div>
+
+    <!-- FLOATING CART BAR -->
+    <div class="cart-bar">
+        <div>
+            <strong>Total:</strong> <span style="color: var(--gold-primary); font-weight:700;">Rs. <span id="cartTotal">0</span></span>
+            <span style="color: var(--text-muted); font-size: 0.85rem;">(<span id="cartCount">0</span> items)</span>
+        </div>
+        <button class="checkout-btn" onclick="openCart()">
+            🛒 View Cart / Checkout
+        </button>
+    </div>
+
+    <!-- CART MODAL -->
+    <div class="modal" id="cartModal">
+        <div class="modal-body">
+            <div class="modal-header">
+                <h3 class="serif-font" style="color:var(--gold-primary); font-size:1.8rem;">Your Order</h3>
+                <button class="close-modal" onclick="closeCart()">&times;</button>
+            </div>
+
+            <div id="cartItemsList"></div>
+
+            <div class="input-field">
+                <label>Your Name</label>
+                <input type="text" id="custName" placeholder="Enter full name">
+            </div>
+            <div class="input-field">
+                <label>Delivery Address</label>
+                <textarea id="custAddress" rows="2" placeholder="House/Street/Area details"></textarea>
+            </div>
+
+            <button class="checkout-btn" style="width: 100%; margin-top: 20px; justify-content: center;" onclick="sendWhatsAppOrder()">
+                📲 Send Order via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // ============================================================
+        // COMPLETE MENU DATA — all items from the image
+        // ============================================================
+        const fullMenuData = [
+
+            // ---------- CHATPATA PARATHA ----------
+            { name: "Mutton Paratha", urdu: "مٹن پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 300,
+                    "Cheese": 350, "Desi Ghee": 400, "Zaitoon": 450 } },
+            { name: "Beef Paratha", urdu: "بیف پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 250,
+                    "Cheese": 300, "Desi Ghee": 350, "Zaitoon": 400 } },
+            { name: "Chicken Paratha", urdu: "چکن پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 250,
+                    "Cheese": 350, "Desi Ghee": 450, "Zaitoon": 470 } },
+            { name: "Kabab Paratha", urdu: "کباب پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 250,
+                    "Cheese": 280, "Desi Ghee": 330, "Zaitoon": 370 } },
+            { name: "Pizza Paratha", urdu: "پزا پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 600,
+                    "Cheese": 670, "Desi Ghee": 720, "Zaitoon": 750 } },
+            { name: "Aloo Paratha", urdu: "آلو پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 150,
+                    "Cheese": 250, "Desi Ghee": 280, "Zaitoon": 330 } },
+            { name: "Omlet Paratha", urdu: "آملیٹ پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 130,
+                    "Cheese": 150, "Desi Ghee": 220, "Zaitoon": 260 } },
+            { name: "Cheese Paratha", urdu: "چیز پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 200,
+                    "Cheese": 250, "Desi Ghee": 300, "Zaitoon": 350 } },
+            { name: "Anda Omlet", urdu: "انڈا آملیٹ", category: "Chatpata Paratha", prices: { "Ghee": 70, "Cheese": 90,
+                    "Desi Ghee": 150, "Zaitoon": 190 } },
+            { name: "Anda Fry", urdu: "انڈا فرائی", category: "Chatpata Paratha", prices: { "Ghee": 70, "Cheese": 90,
+                    "Desi Ghee": 150, "Zaitoon": 190 } },
+            { name: "Anda Pizza", urdu: "انڈا پزا", category: "Chatpata Paratha", prices: { "Ghee": 130, "Cheese": 170,
+                    "Desi Ghee": 200, "Zaitoon": 220 } },
+            { name: "Sada Channay", urdu: "سادہ چنے", category: "Chatpata Paratha", prices: { "Ghee": 120, "Cheese": 120,
+                    "Desi Ghee": 120, "Zaitoon": 120 } },
+
+            // ---------- MEETHA PARATHA ----------
+            { name: "Simple Paratha", urdu: "سادہ پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 70,
+                    "Honey": 120, "Desi Ghee": 170, "Zaitoon": 200 } },
+            { name: "Lacha Paratha", urdu: "لچھا پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 100,
+                    "Honey": 170, "Desi Ghee": 220, "Zaitoon": 250 } },
+            { name: "Malai Paratha", urdu: "ملائی پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 180,
+                    "Honey": 230, "Desi Ghee": 300, "Zaitoon": 350 } },
+            { name: "Honey Paratha", urdu: "ہنی پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 250,
+                    "Honey": 300, "Desi Ghee": 370, "Zaitoon": 420 } },
+            { name: "Sugar Paratha", urdu: "شکر پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 180,
+                    "Honey": 230, "Desi Ghee": 300, "Zaitoon": 350 } },
+            { name: "Badam Paratha", urdu: "بادام پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 250,
+                    "Honey": 300, "Desi Ghee": 370, "Zaitoon": 420 } },
+            { name: "Chilgoza Paratha", urdu: "چلغوزہ پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 350,
+                    "Honey": 400, "Desi Ghee": 470, "Zaitoon": 520 } },
+            { name: "Kaju Paratha", urdu: "کاجو پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 300,
+                    "Honey": 350, "Desi Ghee": 420, "Zaitoon": 470 } },
+            { name: "Akhrot Paratha", urdu: "اخروٹ پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 300,
+                    "Honey": 350, "Desi Ghee": 420, "Zaitoon": 470 } },
+
+            // ---------- TEA & DRINKS ----------
+            { name: "Special Chai", urdu: "اسپیشل چائے", category: "Tea", prices: { "Standard": 80 } },
+            { name: "Golden Malai Tea", urdu: "گولڈن ملائی چائے", category: "Tea", prices: { "Standard": 100 } },
+            { name: "Doodh Patti Gurh Tea", urdu: "دودھ پتی گڑ چائے", category: "Tea", prices: { "Standard": 100 } },
+            { name: "Doodh Kahwa", urdu: "دودھ قہوہ", category: "Tea", prices: { "Standard": 90 } },
+            { name: "Doodh Badami Tea", urdu: "دودھ بادامی چائے", category: "Tea", prices: { "Standard": 150 } },
+            { name: "Doodh Chilgoza Tea", urdu: "دودھ چلغوزہ چائے", category: "Tea", prices: { "Standard": 250 } },
+            { name: "Doodh Kaju Tea", urdu: "دودھ کاجو چائے", category: "Tea", prices: { "Standard": 200 } },
+            { name: "Doodh Akhrot Tea", urdu: "دودھ اخروٹ چائے", category: "Tea", prices: { "Standard": 200 } },
+            { name: "Doodh Honey Tea", urdu: "دودھ ہنی چائے", category: "Tea", prices: { "Standard": 200 } },
+            { name: "Green Tea", urdu: "گرین ٹی", category: "Tea", prices: { "Standard": 70 } },
+            { name: "Coffee", urdu: "کافی", category: "Tea", prices: { "Standard": 200 } },
+            { name: "Green Honey Tea", urdu: "گرین ہنی ٹی", category: "Tea", prices: { "Standard": 150 } },
+            { name: "Green Gur Tea", urdu: "گرین گڑ ٹی", category: "Tea", prices: { "Standard": 100 } },
+            { name: "Brazilian Green Tea", urdu: "برازیلین گرین ٹی", category: "Tea", prices: { "Standard": 200 } },
+            { name: "Lemon Grass", urdu: "لیمن گراس", category: "Tea", prices: { "Standard": 100 } },
+            { name: "Black Tea", urdu: "بلیک ٹی", category: "Tea", prices: { "Standard": 70 } },
+            { name: "Chocolate Tea", urdu: "چاکلیٹ ٹی", category: "Tea", prices: { "Standard": 100 } },
+            { name: "Kashmiri Dry Fruit Tea", urdu: "کشمیر ڈرائی فروٹ ٹی", category: "Tea", prices: { "Standard": 250 } },
+            { name: "Kashmiri Anar Tea", urdu: "کشمیری انار ٹی", category: "Tea", prices: { "Standard": 200 } },
+            { name: "Kashmiri Apple Tea", urdu: "کشمیری ایپل ٹی", category: "Tea", prices: { "Standard": 200 } },
+            { name: "Kashmiri Orange Tea", urdu: "کشمیری اورنج ٹی", category: "Tea", prices: { "Standard": 200 } },
+            { name: "Zafrani Tea", urdu: "زعفرانی چائے", category: "Tea", prices: { "Standard": 250 } },
+            { name: "Diamond Tea", urdu: "ڈائمنڈ چائے", category: "Tea", prices: { "Standard": 200 } },
+
+            // ---------- PAKISTANI FOODS ----------
+            { name: "Chicken Karahi", urdu: "چکن کڑاہی", category: "Pakistani Foods", prices: { "Full": 1600,
+                "Half": 800 } },
+            { name: "Mutton Karahi", urdu: "مٹن کڑاہی", category: "Pakistani Foods", prices: { "Full": 2400,
+                "Half": 1200 } },
+            { name: "Beef Pulao", urdu: "بیف پلاؤ", category: "Pakistani Foods", prices: { "Full": 350, "Half": 250 } },
+            { name: "Simple Pulao", urdu: "سادہ پلاؤ", category: "Pakistani Foods", prices: { "Full": 200, "Half": 100 } },
+            { name: "Chicken Korma", urdu: "چکن قورمہ", category: "Pakistani Foods", prices: { "Full": 300,
+                "Half": 200 } },
+            { name: "Chicken Jalfrezi", urdu: "چکن جلفریزی", category: "Pakistani Foods", prices: { "Full": 300,
+                    "Half": 200 } },
+            { name: "Chicken Keema", urdu: "چکن قیمہ", category: "Pakistani Foods", prices: { "Full": 300,
+                "Half": 200 } },
+            { name: "Chicken Chanay", urdu: "چکن چنے", category: "Pakistani Foods", prices: { "Full": 300,
+                "Half": 200 } },
+            { name: "Namkeen Gosht", urdu: "نمکین گوشت", category: "Pakistani Foods", prices: { "Full": 450,
+                "Half": 300 } },
+            { name: "Namkeen Rosh", urdu: "نمکین روش", category: "Pakistani Foods", prices: { "Standard": 1000 } },
+            { name: "Aloo Gosht", urdu: "آلو گوشت", category: "Pakistani Foods", prices: { "Full": 250, "Half": 250 } },
+            { name: "Matter Keema", urdu: "مٹر قیمہ", category: "Pakistani Foods", prices: { "Full": 300,
+                "Half": 200 } },
+            { name: "Chicken Biryani", urdu: "چکن بریانی", category: "Pakistani Foods", prices: { "Full": 350,
+                "Half": 250 } },
+            { name: "Chicken Handi (Achar)", urdu: "چکن ہانڈی اچار", category: "Pakistani Foods", prices: { "Full": 1600,
+                    "Half": 800 } },
+            { name: "Chicken Handi (Makhni)", urdu: "چکن ہانڈی مکھنی", category: "Pakistani Foods", prices: { "Full": 1600,
+                    "Half": 800 } },
+            { name: "Chicken Handi (White)", urdu: "چکن ہانڈی وائٹ", category: "Pakistani Foods", prices: { "Full": 1600,
+                    "Half": 800 } },
+            { name: "Mineral Water (Large)", urdu: "منرل واٹر بڑا", category: "Pakistani Foods", prices: { "Standard": 100 } },
+            { name: "Mineral Water (Small)", urdu: "منرل واٹر چھوٹا", category: "Pakistani Foods", prices: { "Standard": 60 } },
+
+            // ---------- FRUIT & VEGETABLES (FULLY INCLUDED) ----------
+            { name: "Dal Mash", urdu: "دال ماش", category: "Fruit & Vegetables", prices: { "Full": 200, "Half": 120 } },
+            { name: "Dal Chana", urdu: "دال چنا", category: "Fruit & Vegetables", prices: { "Full": 200, "Half": 120 } },
+            { name: "Dal Mong", urdu: "دال مونگ", category: "Fruit & Vegetables", prices: { "Full": 200, "Half": 120 } },
+            { name: "Chana", urdu: "چنا", category: "Fruit & Vegetables", prices: { "Full": 200, "Half": 120 } },
+            { name: "Lal Lobia", urdu: "لال لوبیا", category: "Fruit & Vegetables", prices: { "Full": 200, "Half": 120 } },
+            { name: "Mix Sabzi", urdu: "مکس سبزی", category: "Fruit & Vegetables", prices: { "Full": 200, "Half": 120 } },
+            { name: "Pota Kleji", urdu: "پوٹا کلیجی", category: "Fruit & Vegetables", prices: { "Full": 300,
+                "Half": 250 } },
+            { name: "Salad", urdu: "سلاد", category: "Fruit & Vegetables", prices: { "Standard": 10 } },
+            { name: "Raita", urdu: "رائتہ", category: "Fruit & Vegetables", prices: { "Standard": 20 } },
+            { name: "Naan", urdu: "نان", category: "Fruit & Vegetables", prices: { "Standard": 30 } },
+            { name: "Roti", urdu: "روٹی", category: "Fruit & Vegetables", prices: { "Standard": 25 } },
+            { name: "Lassi", urdu: "لسی", category: "Fruit & Vegetables", prices: { "Standard": 200 } },
+            { name: "Disposable", urdu: "ڈسپوزایبل", category: "Fruit & Vegetables", prices: { "Standard": 20 } },
+            { name: "Milai", urdu: "ملائی", category: "Fruit & Vegetables", prices: { "Full": 250, "Half": 150 } }
+        ];
+
+        // ============================================================
+        // CART & UI LOGIC
+        // ============================================================
+        let cart = [];
+        let activeCategory = 'All';
+
+        function navigateTo(pageTarget) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+
+            if (pageTarget === 'home') {
+                document.getElementById('page-home').classList.add('active-page');
+                document.getElementById('nav-home').classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (pageTarget === 'menu') {
+                document.getElementById('page-menu').classList.add('active-page');
+                document.getElementById('nav-menu').classList.add('active');
+                filterCategory('All', document.getElementById('tab-All'));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (pageTarget === 'drinks') {
+                document.getElementById('page-menu').classList.add('active-page');
+                document.getElementById('nav-drinks').classList.add('active');
+                filterCategory('Tea', document.getElementById('tab-Tea'));
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function scrollToSection(sectionId) {
+            navigateTo('home');
+            setTimeout(() => {
+                const elem = document.getElementById(sectionId);
+                if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        function renderMenu() {
+            const container = document.getElementById('menuContainer');
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            container.innerHTML = '';
+
+            const categories = activeCategory === 'All'
+                ? [...new Set(fullMenuData.map(i => i.category))]
+                : [activeCategory];
+
+            categories.forEach(cat => {
+                const items = fullMenuData.filter(i => i.category === cat && i.name.toLowerCase().includes(search));
+                if (items.length === 0) return;
+
+                const section = document.createElement('div');
+                section.innerHTML = `<h3 class="category-title serif-font">${cat}</h3>`;
+
+                const grid = document.createElement('div');
+                grid.className = 'grid';
+
+                items.forEach(item => {
+                    const keys = Object.keys(item.prices);
+                    let optionsHtml = '';
+                    if (keys.length > 1) {
+                        optionsHtml = `
+                                <div class="variant-selector">
+                                    <select id="opt-${item.name.replace(/[^a-zA-Z0-9]/g, '')}" onchange="updateCardPrice('${item.name}')">
+                                        ${keys.map(k => `<option value="${k}">${k}</option>`).join('')}
+                                    </select>
+                                </div>
+                            `;
+                    }
+
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                            <div>
+                                <div class="card-top">
+                                    <div class="card-title-en">${item.name}</div>
+                                    <div class="card-title-ur urdu-text">${item.urdu}</div>
+                                </div>
+                                ${optionsHtml}
+                            </div>
+                            <div class="card-bottom">
+                                <div class="price" id="price-${item.name.replace(/[^a-zA-Z0-9]/g, '')}">Rs. ${item.prices[keys[0]]}</div>
+                                <button class="add-cart-btn" onclick="addToCart('${item.name}')">+ Add</button>
+                            </div>
+                        `;
+                    grid.appendChild(card);
+                });
+
+                section.appendChild(grid);
+                container.appendChild(section);
+            });
+        }
+
+        function updateCardPrice(itemName) {
+            const sanitized = itemName.replace(/[^a-zA-Z0-9]/g, '');
+            const item = fullMenuData.find(i => i.name === itemName);
+            const select = document.getElementById(`opt-${sanitized}`);
+            const priceTag = document.getElementById(`price-${sanitized}`);
+            if (select && priceTag) {
+                priceTag.innerText = `Rs. ${item.prices[select.value]}`;
+            }
+        }
+
+        function filterCategory(cat, btn) {
+            activeCategory = cat;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderMenu();
+        }
+
+        function addToCart(itemName) {
+            const item = fullMenuData.find(i => i.name === itemName);
+            const sanitized = itemName.replace(/[^a-zA-Z0-9]/g, '');
+            const select = document.getElementById(`opt-${sanitized}`);
+            const variant = select ? select.value : Object.keys(item.prices)[0];
+            const price = item.prices[variant];
+
+            const existingIndex = cart.findIndex(c => c.name === itemName && c.variant === variant);
+            if (existingIndex > -1) {
+                cart[existingIndex].qty += 1;
+            } else {
+                cart.push({ name: itemName, variant: variant, price: price, qty: 1 });
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            let total = 0;
+            let count = 0;
+            cart.forEach(i => {
+                total += i.price * i.qty;
+                count += i.qty;
+            });
+            document.getElementById('cartTotal').innerText = total;
+            document.getElementById('cartCount').innerText = count;
+        }
+
+        function openCart() {
+            const list = document.getElementById('cartItemsList');
+            list.innerHTML = '';
+            if (cart.length === 0) {
+                list.innerHTML = '<p style="color:var(--text-muted); text-align:center; padding: 20px 0;">Your cart is empty.</p>';
+            } else {
+                cart.forEach((item, index) => {
+                    list.innerHTML += `
+                            <div class="cart-item-row">
+                                <div>
+                                    <strong style="color:#fff;">${item.name}</strong><br>
+                                    <small style="color:var(--gold-primary);">${item.variant} - Rs. ${item.price}</small>
+                                </div>
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                                    <span>${item.qty}</span>
+                                    <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+                                </div>
+                            </div>
+                        `;
+                });
+            }
+            document.getElementById('cartModal').style.display = 'flex';
+        }
+
+        function changeQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) cart.splice(index, 1);
+            updateCartUI();
+            openCart();
+        }
+
+        function closeCart() {
+            document.getElementById('cartModal').style.display = 'none';
+        }
+
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) return alert("Your cart is empty!");
+            const name = document.getElementById('custName').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+            if (!name || !address) return alert("Please enter your name and delivery address.");
+
+            let msg = `*NEW ORDER - QUETTA CHAI KHANNA*\n\n`;
+            msg += `👤 *Customer:* ${name}\n`;
+            msg += `📍 *Address:* ${address}\n\n`;
+            msg += `🛒 *ORDER ITEMS:*\n`;
+
+            let total = 0;
+            cart.forEach(i => {
+                const itemTotal = i.price * i.qty;
+                total += itemTotal;
+                msg += `• ${i.name} (${i.variant}) x${i.qty} = Rs. ${itemTotal}\n`;
+            });
+
+            msg += `\n💰 *TOTAL AMOUNT:* Rs. ${total}`;
+
+            const phone = "923016999013";
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // Initial render
+        renderMenu();
+    </script>
+</body>
+</html>
