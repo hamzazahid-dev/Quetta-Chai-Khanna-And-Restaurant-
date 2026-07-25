@@ -345,7 +345,8 @@
             "Chicken Paratha": "Chicken%20paratha.jpeg",
             "Kabab Paratha": "Kabab%20paratha%20.jpeg",
             "Mutton Paratha": "Mutton%20paratha%20.jpeg",
-            "Omlet Paratha": "Omelet%20paratha%20.jpeg"
+            "Omlet Paratha": "Omelet%20paratha%20.jpeg",
+            "Pizza Paratha": "Pizza%20paratha.jpeg"  // ← NEW image added
         };
 
         function getImageUrl(itemName) {
@@ -428,7 +429,6 @@
                     const card = document.createElement('div');
                     card.className = 'card';
                     
-                    // Check if item has an image
                     const imgSrc = getImageUrl(item.name);
                     let imageHtml = '';
                     
