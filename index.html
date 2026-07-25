@@ -70,8 +70,8 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
         .card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s ease; }
         .card:hover { transform: translateY(-4px); border-color: var(--border-glow); }
-        .menu-item-img { width: 100%; height: 170px; object-fit: cover; border-radius: 8px; margin-bottom: 14px; background-color: var(--bg-dark); border: 1px solid var(--border-subtle); }
-        .img-fallback { display: flex; align-items: center; justify-content: center; background: var(--bg-dark); color: var(--gold-primary); font-weight: 600; font-size: 1.1rem; text-align: center; padding: 0 10px; width: 100%; height: 170px; border-radius: 8px; border: 1px solid var(--border-glow); }
+        .menu-item-img { width: 100%; height: 170px; object-fit: cover; border-radius: 8px; margin-bottom: 14px; background-color: var(--bg-dark); border: 1px solid var(--border-subtle); display: block; }
+        .img-fallback { display: flex; align-items: center; justify-content: center; background: var(--bg-dark); color: var(--gold-primary); font-weight: 600; font-size: 1.1rem; text-align: center; padding: 0 15px; width: 100%; height: 170px; border-radius: 8px; border: 1px solid var(--border-glow); margin-bottom: 14px; }
         .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
         .card-title-en { font-size: 1.1rem; font-weight: 600; color: #fff; }
         .card-title-ur { color: var(--gold-primary); font-size: 0.9rem; text-align: right; }
@@ -245,7 +245,7 @@
 
     <script>
         // ================================================================
-        // COMPLETE MENU DATA — all items from the image
+        // COMPLETE MENU DATA
         // ================================================================
         const fullMenuData = [
             // Chatpata Paratha
@@ -332,13 +332,11 @@
         ];
 
         // ================================================================
-        // IMAGE MAP – YOUR GITHUB IMAGES
+        // IMAGE MAP – YOUR GITHUB IMAGES (RAW URL FORMAT)
         // ================================================================
-        // Base URL for raw images on GitHub
         const IMAGE_BASE = 'https://raw.githubusercontent.com/hamzazahid-dev/Quetta-Chai-Khanna-And-Restaurant-/main/';
 
         // Map menu item names to their actual image filenames on GitHub
-        // (If a filename differs from the item name, add it here)
         const imageMap = {
             "Aloo Paratha": "Aloo%20paratha.jpeg",
             "Anda Omlet": "Anda%20paratha.jpeg",
@@ -351,14 +349,10 @@
         };
 
         function getImageUrl(itemName) {
-            // If we have a specific mapping for this item, use it
             if (imageMap[itemName]) {
                 return IMAGE_BASE + imageMap[itemName];
             }
-            // Otherwise, build the URL from the item name
-            // (replace spaces with %20 for URL encoding)
-            const encodedName = encodeURIComponent(itemName) + '.jpeg';
-            return IMAGE_BASE + encodedName;
+            return null;
         }
 
         function getFallbackHtml(itemName) {
@@ -366,7 +360,7 @@
         }
 
         // ================================================================
-        // CART & UI LOGIC (unchanged)
+        // CART & UI LOGIC
         // ================================================================
         let cart = [];
         let activeCategory = 'All';
@@ -433,11 +427,21 @@
 
                     const card = document.createElement('div');
                     card.className = 'card';
+                    
+                    // Check if item has an image
                     const imgSrc = getImageUrl(item.name);
+                    let imageHtml = '';
+                    
+                    if (imgSrc) {
+                        imageHtml = `<img src="${imgSrc}" alt="${item.name}" class="menu-item-img" loading="lazy" 
+                                     onerror="this.onerror=null; this.outerHTML = '${getFallbackHtml(item.name)}';">`;
+                    } else {
+                        imageHtml = getFallbackHtml(item.name);
+                    }
+
                     card.innerHTML = `
                         <div>
-                            <img src="${imgSrc}" alt="${item.name}" class="menu-item-img" loading="lazy" 
-                                 onerror="this.onerror=null; this.parentNode.innerHTML = '${getFallbackHtml(item.name)}' + this.parentNode.innerHTML.replace(this.outerHTML, '');">
+                            ${imageHtml}
                             <div class="card-top">
                                 <div class="card-title-en">${item.name}</div>
                                 <div class="card-title-ur urdu-text">${item.urdu}</div>
@@ -565,4 +569,4 @@
         renderMenu();
     </script>
 </body>
-                </html>
+</html>
