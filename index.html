@@ -70,8 +70,9 @@
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
         .card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.2s ease; }
         .card:hover { transform: translateY(-4px); border-color: var(--border-glow); }
-        .menu-item-img { width: 100%; height: 170px; object-fit: cover; border-radius: 8px; margin-bottom: 14px; background-color: var(--bg-dark); border: 1px solid var(--border-subtle); display: block; }
-        .img-fallback { display: flex; align-items: center; justify-content: center; background: var(--bg-dark); color: var(--gold-primary); font-weight: 600; font-size: 1.1rem; text-align: center; padding: 0 15px; width: 100%; height: 170px; border-radius: 8px; border: 1px solid var(--border-glow); margin-bottom: 14px; }
+        .img-container { position: relative; width: 100%; height: 170px; margin-bottom: 14px; border-radius: 8px; overflow: hidden; background: var(--bg-dark); border: 1px solid var(--border-subtle); }
+        .menu-item-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .img-fallback { display: none; align-items: center; justify-content: center; background: var(--bg-dark); color: var(--gold-primary); font-weight: 600; font-size: 1.1rem; text-align: center; padding: 0 15px; width: 100%; height: 100%; border-radius: 8px; border: 1px solid var(--border-glow); }
         .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
         .card-title-en { font-size: 1.1rem; font-weight: 600; color: #fff; }
         .card-title-ur { color: var(--gold-primary); font-size: 0.9rem; text-align: right; }
@@ -336,7 +337,6 @@
         // ================================================================
         const IMAGE_BASE = 'https://raw.githubusercontent.com/hamzazahid-dev/Quetta-Chai-Khanna-And-Restaurant-/main/';
 
-        // Map menu item names to their actual image filenames on GitHub
         const imageMap = {
             "Aloo Paratha": "Aloo%20paratha.jpeg",
             "Anda Omlet": "Anda%20paratha.jpeg",
@@ -346,7 +346,7 @@
             "Kabab Paratha": "Kabab%20paratha%20.jpeg",
             "Mutton Paratha": "Mutton%20paratha%20.jpeg",
             "Omlet Paratha": "Omelet%20paratha%20.jpeg",
-            "Pizza Paratha": "Pizza%20paratha.jpeg"  // ← NEW image added
+            "Pizza Paratha": "Pizza%20paratha.jpeg"
         };
 
         function getImageUrl(itemName) {
@@ -354,10 +354,6 @@
                 return IMAGE_BASE + imageMap[itemName];
             }
             return null;
-        }
-
-        function getFallbackHtml(itemName) {
-            return `<div class="img-fallback">${itemName}</div>`;
         }
 
         // ================================================================
@@ -429,19 +425,47 @@
                     const card = document.createElement('div');
                     card.className = 'card';
                     
-                    const imgSrc = getImageUrl(item.name);
-                    let imageHtml = '';
+                    // Create image container with img and fallback div
+                    const imgContainer = document.createElement('div');
+                    imgContainer.className = 'img-container';
                     
+                    const img = document.createElement('img');
+                    img.className = 'menu-item-img';
+                    const imgSrc = getImageUrl(item.name);
                     if (imgSrc) {
-                        imageHtml = `<img src="${imgSrc}" alt="${item.name}" class="menu-item-img" loading="lazy" 
-                                     onerror="this.onerror=null; this.outerHTML = '${getFallbackHtml(item.name)}';">`;
+                        img.src = imgSrc;
                     } else {
-                        imageHtml = getFallbackHtml(item.name);
+                        // If no image mapped, directly show fallback
+                        const fallbackDiv = document.createElement('div');
+                        fallbackDiv.className = 'img-fallback';
+                        fallbackDiv.textContent = item.name;
+                        fallbackDiv.style.display = 'flex';
+                        imgContainer.appendChild(fallbackDiv);
                     }
-
+                    img.alt = item.name;
+                    img.loading = 'lazy';
+                    
+                    const fallback = document.createElement('div');
+                    fallback.className = 'img-fallback';
+                    fallback.textContent = item.name;
+                    fallback.style.display = 'none';
+                    
+                    // On error, hide image and show fallback
+                    img.onerror = function() {
+                        this.style.display = 'none';
+                        fallback.style.display = 'flex';
+                    };
+                    
+                    // If image src is null, we already added fallback
+                    if (imgSrc) {
+                        imgContainer.appendChild(img);
+                        imgContainer.appendChild(fallback);
+                    }
+                    
+                    // Build card HTML with the container
                     card.innerHTML = `
                         <div>
-                            ${imageHtml}
+                            ${imgContainer.outerHTML}
                             <div class="card-top">
                                 <div class="card-title-en">${item.name}</div>
                                 <div class="card-title-ur urdu-text">${item.urdu}</div>
