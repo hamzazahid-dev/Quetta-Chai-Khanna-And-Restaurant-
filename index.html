@@ -588,6 +588,422 @@
             const phone = "923016999013"; 
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
+        <script>
+    // ================================================================
+    // COMPLETE MENU DATA
+    // ================================================================
+    const fullMenuData = [
+        // Chatpata Paratha
+        { name: "Mutton Paratha", urdu: "مٹن پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 300, "Cheese": 350, "Desi Ghee": 400, "Zaitoon": 450 } },
+        { name: "Beef Paratha", urdu: "بیف پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 250, "Cheese": 300, "Desi Ghee": 350, "Zaitoon": 400 } },
+        { name: "Chicken Paratha", urdu: "چکن پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 250, "Cheese": 350, "Desi Ghee": 450, "Zaitoon": 470 } },
+        { name: "Kabab Paratha", urdu: "کباب پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 250, "Cheese": 280, "Desi Ghee": 330, "Zaitoon": 370 } },
+        { name: "Pizza Paratha", urdu: "پزا پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 600, "Cheese": 670, "Desi Ghee": 720, "Zaitoon": 750 } },
+        { name: "Aloo Paratha", urdu: "آلو پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 150, "Cheese": 250, "Desi Ghee": 280, "Zaitoon": 330 } },
+        { name: "Omlet Paratha", urdu: "آملیٹ پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 130, "Cheese": 150, "Desi Ghee": 220, "Zaitoon": 260 } },
+        { name: "Cheese Paratha", urdu: "چیز پراٹھا", category: "Chatpata Paratha", prices: { "Ghee": 200, "Cheese": 250, "Desi Ghee": 300, "Zaitoon": 350 } },
+        { name: "Anda Omlet", urdu: "انڈا آملیٹ", category: "Chatpata Paratha", prices: { "Ghee": 70, "Cheese": 90, "Desi Ghee": 150, "Zaitoon": 190 } },
+        { name: "Anda Fry", urdu: "انڈا فرائی", category: "Chatpata Paratha", prices: { "Ghee": 70, "Cheese": 90, "Desi Ghee": 150, "Zaitoon": 190 } },
+        { name: "Anda Pizza", urdu: "انڈا پزا", category: "Chatpata Paratha", prices: { "Ghee": 130, "Cheese": 170, "Desi Ghee": 200, "Zaitoon": 220 } },
+        { name: "Sada Channay", urdu: "سادہ چنے", category: "Chatpata Paratha", prices: { "Ghee": 120, "Cheese": 120, "Desi Ghee": 120, "Zaitoon": 120 } },
+        // Meetha Paratha
+        { name: "Simple Paratha", urdu: "سادہ پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 70, "Honey": 120, "Desi Ghee": 170, "Zaitoon": 200 } },
+        { name: "Lacha Paratha", urdu: "لچھا پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 100, "Honey": 170, "Desi Ghee": 220, "Zaitoon": 250 } },
+        { name: "Malai Paratha", urdu: "ملائی پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 180, "Honey": 230, "Desi Ghee": 300, "Zaitoon": 350 } },
+        { name: "Honey Paratha", urdu: "ہنی پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 250, "Honey": 300, "Desi Ghee": 370, "Zaitoon": 420 } },
+        { name: "Sugar Paratha", urdu: "شکر پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 180, "Honey": 230, "Desi Ghee": 300, "Zaitoon": 350 } },
+        { name: "Badam Paratha", urdu: "بادام پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 250, "Honey": 300, "Desi Ghee": 370, "Zaitoon": 420 } },
+        { name: "Chilgoza Paratha", urdu: "چلغوزہ پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 350, "Honey": 400, "Desi Ghee": 470, "Zaitoon": 520 } },
+        { name: "Kaju Paratha", urdu: "کاجو پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 300, "Honey": 350, "Desi Ghee": 420, "Zaitoon": 470 } },
+        { name: "Akhrot Paratha", urdu: "اخروٹ پراٹھا", category: "Meetha Paratha", prices: { "Ghee": 300, "Honey": 350, "Desi Ghee": 420, "Zaitoon": 470 } },
+        // Tea & Drinks
+        { name: "Special Chai", urdu: "اسپیشل چائے", category: "Tea", prices: { "Standard": 80 } },
+        { name: "Golden Malai Tea", urdu: "گولڈن ملائی چائے", category: "Tea", prices: { "Standard": 100 } },
+        { name: "Doodh Patti Gurh Tea", urdu: "دودھ پتی گڑ چائے", category: "Tea", prices: { "Standard": 100 } },
+        { name: "Doodh Kahwa", urdu: "دودھ قہوہ", category: "Tea", prices: { "Standard": 90 } },
+        { name: "Doodh Badami Tea", urdu: "دودھ بادامی چائے", category: "Tea", prices: { "Standard": 150 } },
+        { name: "Doodh Chilgoza Tea", urdu: "دودھ چلغوزہ چائے", category: "Tea", prices: { "Standard": 250 } },
+        { name: "Doodh Kaju Tea", urdu: "دودھ کاجو چائے", category: "Tea", prices: { "Standard": 200 } },
+        { name: "Doodh Akhrot Tea", urdu: "دودھ اخروٹ چائے", category: "Tea", prices: { "Standard": 200 } },
+        { name: "Doodh Honey Tea", urdu: "دودھ ہنی چائے", category: "Tea", prices: { "Standard": 200 } },
+        { name: "Green Tea", urdu: "گرین ٹی", category: "Tea", prices: { "Standard": 70 } },
+        { name: "Coffee", urdu: "کافی", category: "Tea", prices: { "Standard": 200 } },
+        { name: "Green Honey Tea", urdu: "گرین ہنی ٹی", category: "Tea", prices: { "Standard": 150 } },
+        { name: "Green Gur Tea", urdu: "گرین گڑ ٹی", category: "Tea", prices: { "Standard": 100 } },
+        { name: "Brazilian Green Tea", urdu: "برازیلین گرین ٹی", category: "Tea", prices: { "Standard": 200 } },
+        { name: "Lemon Grass", urdu: "لیمن گراس", category: "Tea", prices: { "Standard": 100 } },
+        { name: "Black Tea", urdu: "بلیک ٹی", category: "Tea", prices: { "Standard": 70 } },
+        { name: "Chocolate Tea", urdu: "چاکلیٹ ٹی", category: "Tea", prices: { "Standard": 100 } },
+        { name: "Kashmiri Dry Fruit Tea", urdu: "کشمیر ڈرائی فروٹ ٹی", category: "Tea", prices: { "Standard": 250 } },
+        { name: "Kashmiri Anar Tea", urdu: "کشمیری انار ٹی", category: "Tea", prices: { "Standard": 200 } },
+        { name: "Kashmiri Apple Tea", urdu: "کشمیری ایپل ٹی", category: "Tea", prices: { "Standard": 200 } },
+        { name: "Kashmiri Orange Tea", urdu: "کشمیری اورنج ٹی", category: "Tea", prices: { "Standard": 200 } },
+        { name: "Zafrani Tea", urdu: "زعفرانی چائے", category: "Tea", prices: { "Standard": 250 } },
+        { name: "Diamond Tea", urdu: "ڈائمنڈ چائے", category: "Tea", prices: { "Standard": 200 } },
+        // Pakistani Foods
+        { name: "Chicken Karahi", urdu: "چکن کڑاہی", category: "Pakistani Foods", prices: { "Full": 1600, "Half": 800 } },
+        { name: "Mutton Karahi", urdu: "مٹن کڑاہی", category: "Pakistani Foods", prices: { "Full": 2400, "Half": 1200 } },
+        { name: "Beef Pulao", urdu: "بیف پلاؤ", category: "Pakistani Foods", prices: { "Full": 350, "Half": 250 } },
+        { name: "Simple Pulao", urdu: "سادہ پلاؤ", category: "Pakistani Foods", prices: { "Full": 200, "Half": 100 } },
+        { name: "Chicken Korma", urdu: "چکن قورمہ", category: "Pakistani Foods", prices: { "Full": 300, "Half": 200 } },
+        { name: "Chicken Jalfrezi", urdu: "چکن جلفریزی", category: "Pakistani Foods", prices: { "Full": 300, "Half": 200 } },
+        { name: "Chicken Keema", urdu: "چکن قیمہ", category: "Pakistani Foods", prices: { "Full": 300, "Half": 200 } },
+        { name: "Chicken Chanay", urdu: "چکن چنے", category: "Pakistani Foods", prices: { "Full": 300, "Half": 200 } },
+        { name: "Namkeen Gosht", urdu: "نمکین گوشت", category: "Pakistani Foods", prices: { "Full": 450, "Half": 300 } },
+        { name: "Namkeen Rosh", urdu: "نمکین روش", category: "Pakistani Foods", prices: { "Standard": 1000 } },
+        { name: "Aloo Gosht", urdu: "آلو گوشت", category: "Pakistani Foods", prices: { "Full": 250, "Half": 250 } },
+        { name: "Matter Keema", urdu: "مٹر قیمہ", category: "Pakistani Foods", prices: { "Full": 300, "Half": 200 } },
+        { name: "Chicken Biryani", urdu: "چکن بریانی", category: "Pakistani Foods", prices: { "Full": 350, "Half": 250 } },
+        { name: "Chicken Handi (Achar)", urdu: "چکن ہانڈی اچار", category: "Pakistani Foods", prices: { "Full": 1600, "Half": 800 } },
+        { name: "Chicken Handi (Makhni)", urdu: "چکن ہانڈی مکھنی", category: "Pakistani Foods", prices: { "Full": 1600, "Half": 800 } },
+        { name: "Chicken Handi (White)", urdu: "چکن ہانڈی وائٹ", category: "Pakistani Foods", prices: { "Full": 1600, "Half": 800 } },
+        { name: "Mineral Water (Large)", urdu: "منرل واٹر بڑا", category: "Pakistani Foods", prices: { "Standard": 100 } },
+        { name: "Mineral Water (Small)", urdu: "منرل واٹر چھوٹا", category: "Pakistani Foods", prices: { "Standard": 60 } },
+        // Fruit & Vegetables
+        { name: "Dal Mash", urdu: "دال ماش", category: "Fruit & Vegetables", prices: { "Full": 200, "Half": 120 } },
+        { name: "Dal Chana", urdu: "دال چنا", category: "Fruit & Vegetables", prices: { "Full": 200, "Half": 120 } },
+        { name: "Dal Mong", urdu: "دال مونگ", category: "Fruit & Vegetables", prices: { "Full": 200, "Half": 120 } },
+        { name: "Chana", urdu: "چنا", category: "Fruit & Vegetables", prices: { "Full": 200, "Half": 120 } },
+        { name: "Lal Lobia", urdu: "لال لوبیا", category: "Fruit & Vegetables", prices: { "Full": 200, "Half": 120 } },
+        { name: "Mix Sabzi", urdu: "مکس سبزی", category: "Fruit & Vegetables", prices: { "Full": 200, "Half": 120 } },
+        { name: "Pota Kleji", urdu: "پوٹا کلیجی", category: "Fruit & Vegetables", prices: { "Full": 300, "Half": 250 } },
+        { name: "Salad", urdu: "سلاد", category: "Fruit & Vegetables", prices: { "Standard": 10 } },
+        { name: "Raita", urdu: "رائتہ", category: "Fruit & Vegetables", prices: { "Standard": 20 } },
+        { name: "Naan", urdu: "نان", category: "Fruit & Vegetables", prices: { "Standard": 30 } },
+        { name: "Roti", urdu: "روٹی", category: "Fruit & Vegetables", prices: { "Standard": 25 } },
+        { name: "Lassi", urdu: "لسی", category: "Fruit & Vegetables", prices: { "Standard": 200 } },
+        { name: "Disposable", urdu: "ڈسپوزایبل", category: "Fruit & Vegetables", prices: { "Standard": 20 } },
+        { name: "Milai", urdu: "ملائی", category: "Fruit & Vegetables", prices: { "Full": 250, "Half": 150 } }
+    ];
+
+    // ================================================================
+    // IMAGE MAPPING LOGIC
+    // Keeps your GitHub images & uses high-res food URLs for the rest!
+    // ================================================================
+    const GITHUB_BASE = 'https://raw.githubusercontent.com/hamzazahid-dev/Quetta-Chai-Khanna-And-Restaurant-/main/';
+
+    // 1. Your custom GitHub uploaded images
+    const githubImages = {
+        "Aloo Paratha": "Aloo%20paratha.jpeg",
+        "Anda Omlet": "Anda%20paratha.jpeg",
+        "Beef Paratha": "Beef%20Paratha%20.jpeg",
+        "Cheese Paratha": "Cheese%20paratha%20.jpeg",
+        "Chicken Paratha": "Chicken%20paratha.jpeg",
+        "Kabab Paratha": "Kabab%20paratha%20.jpeg",
+        "Mutton Paratha": "Mutton%20paratha%20.jpeg",
+        "Omlet Paratha": "Omelet%20paratha%20.jpeg",
+        "Pizza Paratha": "Pizza%20paratha.jpeg"
+    };
+
+    // 2. High quality web images for all other menu items
+    const externalImages = {
+        // Parathas & Breakfast
+        "Anda Fry": "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=500&q=80",
+        "Anda Pizza": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80",
+        "Sada Channay": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80",
+        "Simple Paratha": "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=500&q=80",
+        "Lacha Paratha": "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=500&q=80",
+        "Malai Paratha": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80",
+        "Honey Paratha": "https://images.unsplash.com/photo-1584776296944-ab6fb57b0bff?auto=format&fit=crop&w=500&q=80",
+        "Sugar Paratha": "https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=500&q=80",
+        "Badam Paratha": "https://images.unsplash.com/photo-1508061253366-f7da158b6d96?auto=format&fit=crop&w=500&q=80",
+        "Chilgoza Paratha": "https://images.unsplash.com/photo-1508061253366-f7da158b6d96?auto=format&fit=crop&w=500&q=80",
+        "Kaju Paratha": "https://images.unsplash.com/photo-1508061253366-f7da158b6d96?auto=format&fit=crop&w=500&q=80",
+        "Akhrot Paratha": "https://images.unsplash.com/photo-1508061253366-f7da158b6d96?auto=format&fit=crop&w=500&q=80",
+
+        // Teas & Beverages
+        "Special Chai": "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=500&q=80",
+        "Golden Malai Tea": "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=500&q=80",
+        "Doodh Patti Gurh Tea": "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=500&q=80",
+        "Doodh Kahwa": "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=500&q=80",
+        "Doodh Badami Tea": "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=500&q=80",
+        "Doodh Chilgoza Tea": "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=500&q=80",
+        "Doodh Kaju Tea": "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=500&q=80",
+        "Doodh Akhrot Tea": "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=500&q=80",
+        "Doodh Honey Tea": "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=500&q=80",
+        "Green Tea": "https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?auto=format&fit=crop&w=500&q=80",
+        "Coffee": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=500&q=80",
+        "Green Honey Tea": "https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?auto=format&fit=crop&w=500&q=80",
+        "Green Gur Tea": "https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?auto=format&fit=crop&w=500&q=80",
+        "Brazilian Green Tea": "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=500&q=80",
+        "Lemon Grass": "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=500&q=80",
+        "Black Tea": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=500&q=80",
+        "Chocolate Tea": "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=500&q=80",
+        "Kashmiri Dry Fruit Tea": "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=500&q=80",
+        "Kashmiri Anar Tea": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=500&q=80",
+        "Kashmiri Apple Tea": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=500&q=80",
+        "Kashmiri Orange Tea": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=500&q=80",
+        "Zafrani Tea": "https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?auto=format&fit=crop&w=500&q=80",
+        "Diamond Tea": "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=500&q=80",
+
+        // Pakistani Mains & Dishes
+        "Chicken Karahi": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=500&q=80",
+        "Mutton Karahi": "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=500&q=80",
+        "Beef Pulao": "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=500&q=80",
+        "Simple Pulao": "https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=500&q=80",
+        "Chicken Korma": "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80",
+        "Chicken Jalfrezi": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=500&q=80",
+        "Chicken Keema": "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80",
+        "Chicken Chanay": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80",
+        "Namkeen Gosht": "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=500&q=80",
+        "Namkeen Rosh": "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=500&q=80",
+        "Aloo Gosht": "https://images.unsplash.com/photo-1545247181-516773cae754?auto=format&fit=crop&w=500&q=80",
+        "Matter Keema": "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80",
+        "Chicken Biryani": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=500&q=80",
+        "Chicken Handi (Achar)": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=500&q=80",
+        "Chicken Handi (Makhni)": "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80",
+        "Chicken Handi (White)": "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80",
+        "Mineral Water (Large)": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=500&q=80",
+        "Mineral Water (Small)": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=500&q=80",
+
+        // Dal, Veggies & Sides
+        "Dal Mash": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80",
+        "Dal Chana": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80",
+        "Dal Mong": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80",
+        "Chana": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80",
+        "Lal Lobia": "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=500&q=80",
+        "Mix Sabzi": "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=80",
+        "Pota Kleji": "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80",
+        "Salad": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80",
+        "Raita": "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=500&q=80",
+        "Naan": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+        "Roti": "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=500&q=80",
+        "Lassi": "https://images.unsplash.com/photo-1571006682882-938b813b1856?auto=format&fit=crop&w=500&q=80",
+        "Disposable": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=500&q=80",
+        "Milai": "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=500&q=80"
+    };
+
+    function getImageUrl(itemName) {
+        if (githubImages[itemName]) {
+            return GITHUB_BASE + githubImages[itemName];
+        }
+        if (externalImages[itemName]) {
+            return externalImages[itemName];
+        }
+        return "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80";
+    }
+
+    // ================================================================
+    // CART & UI LOGIC
+    // ================================================================
+    let cart = [];
+    let activeCategory = 'All';
+
+    function navigateTo(pageTarget) {
+        document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active-page'));
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        if (pageTarget === 'home') {
+            document.getElementById('page-home').classList.add('active-page');
+            document.getElementById('nav-home').classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (pageTarget === 'menu') {
+            document.getElementById('page-menu').classList.add('active-page');
+            document.getElementById('nav-menu').classList.add('active');
+            filterCategory('All', document.getElementById('tab-All'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else if (pageTarget === 'drinks') {
+            document.getElementById('page-menu').classList.add('active-page');
+            document.getElementById('nav-drinks').classList.add('active');
+            filterCategory('Tea', document.getElementById('tab-Tea'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    }
+
+    function scrollToSection(sectionId) {
+        navigateTo('home');
+        setTimeout(() => {
+            const elem = document.getElementById(sectionId);
+            if (elem) elem.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    }
+
+    function renderMenu() {
+        const container = document.getElementById('menuContainer');
+        const search = document.getElementById('searchInput').value.toLowerCase();
+        container.innerHTML = '';
+
+        const categories = activeCategory === 'All' 
+            ? [...new Set(fullMenuData.map(i => i.category))]
+            : [activeCategory];
+
+        categories.forEach(cat => {
+            const items = fullMenuData.filter(i => i.category === cat && i.name.toLowerCase().includes(search));
+            if (items.length === 0) return;
+
+            const section = document.createElement('div');
+            section.innerHTML = `<h3 class="category-title serif-font">${cat}</h3>`;
+            
+            const grid = document.createElement('div');
+            grid.className = 'grid';
+
+            items.forEach(item => {
+                const keys = Object.keys(item.prices);
+                let optionsHtml = '';
+                if (keys.length > 1) {
+                    optionsHtml = `
+                        <div class="variant-selector">
+                            <select id="opt-${item.name.replace(/[^a-zA-Z0-9]/g, '')}" onchange="updateCardPrice('${item.name}')">
+                                ${keys.map(k => `<option value="${k}">${k}</option>`).join('')}
+                            </select>
+                        </div>
+                    `;
+                }
+
+                const card = document.createElement('div');
+                card.className = 'card';
+                
+                const imgContainer = document.createElement('div');
+                imgContainer.className = 'img-container';
+                
+                const img = document.createElement('img');
+                img.className = 'menu-item-img';
+                img.src = getImageUrl(item.name);
+                img.alt = item.name;
+                img.loading = 'lazy';
+                
+                const fallback = document.createElement('div');
+                fallback.className = 'img-fallback';
+                fallback.textContent = item.name;
+                fallback.style.display = 'none';
+                
+                img.onerror = function() {
+                    this.style.display = 'none';
+                    fallback.style.display = 'flex';
+                };
+                
+                imgContainer.appendChild(img);
+                imgContainer.appendChild(fallback);
+                
+                card.innerHTML = `
+                    <div>
+                        ${imgContainer.outerHTML}
+                        <div class="card-top">
+                            <div class="card-title-en">${item.name}</div>
+                            <div class="card-title-ur urdu-text">${item.urdu}</div>
+                        </div>
+                        ${optionsHtml}
+                    </div>
+                    <div class="card-bottom">
+                        <div class="price" id="price-${item.name.replace(/[^a-zA-Z0-9]/g, '')}">Rs. ${item.prices[keys[0]]}</div>
+                        <button class="add-cart-btn" onclick="addToCart('${item.name}')">+ Add</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            section.appendChild(grid);
+            container.appendChild(section);
+        });
+    }
+
+    function updateCardPrice(itemName) {
+        const sanitized = itemName.replace(/[^a-zA-Z0-9]/g, '');
+        const item = fullMenuData.find(i => i.name === itemName);
+        const select = document.getElementById(`opt-${sanitized}`);
+        const priceTag = document.getElementById(`price-${sanitized}`);
+        if (select && priceTag) {
+            priceTag.innerText = `Rs. ${item.prices[select.value]}`;
+        }
+    }
+
+    function filterCategory(cat, btn) {
+        activeCategory = cat;
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        if(btn) btn.classList.add('active');
+        renderMenu();
+    }
+
+    function addToCart(itemName) {
+        const item = fullMenuData.find(i => i.name === itemName);
+        const sanitized = itemName.replace(/[^a-zA-Z0-9]/g, '');
+        const select = document.getElementById(`opt-${sanitized}`);
+        const variant = select ? select.value : Object.keys(item.prices)[0];
+        const price = item.prices[variant];
+
+        const existingIndex = cart.findIndex(c => c.name === itemName && c.variant === variant);
+        if (existingIndex > -1) {
+            cart[existingIndex].qty += 1;
+        } else {
+            cart.push({ name: itemName, variant: variant, price: price, qty: 1 });
+        }
+        updateCartUI();
+    }
+
+    function updateCartUI() {
+        let total = 0;
+        let count = 0;
+        cart.forEach(i => {
+            total += i.price * i.qty;
+            count += i.qty;
+        });
+        document.getElementById('cartTotal').innerText = total;
+        document.getElementById('cartCount').innerText = count;
+    }
+
+    function openCart() {
+        const list = document.getElementById('cartItemsList');
+        list.innerHTML = '';
+        if(cart.length === 0) {
+            list.innerHTML = '<p style="color:var(--text-muted); text-align:center; padding: 20px 0;">Your cart is empty.</p>';
+        } else {
+            cart.forEach((item, index) => {
+                list.innerHTML += `
+                    <div class="cart-item-row">
+                        <div>
+                            <strong style="color:#fff;">${item.name}</strong><br>
+                            <small style="color:var(--gold-primary);">${item.variant} - Rs. ${item.price}</small>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                            <span>${item.qty}</span>
+                            <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+        document.getElementById('cartModal').style.display = 'flex';
+    }
+
+    function changeQty(index, delta) {
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) cart.splice(index, 1);
+        updateCartUI();
+        openCart();
+    }
+
+    function closeCart() {
+        document.getElementById('cartModal').style.display = 'none';
+    }
+
+    function sendWhatsAppOrder() {
+        if (cart.length === 0) return alert("Your cart is empty!");
+        const name = document.getElementById('custName').value.trim();
+        const address = document.getElementById('custAddress').value.trim();
+        if(!name || !address) return alert("Please enter your name and delivery address.");
+
+        let msg = `*NEW ORDER - QUETTA CHAI KHANNA*\n\n`;
+        msg += `👤 *Customer:* ${name}\n`;
+        msg += `📍 *Address:* ${address}\n\n`;
+        msg += `🛒 *ORDER ITEMS:*\n`;
+        
+        let total = 0;
+        cart.forEach(i => {
+            const itemTotal = i.price * i.qty;
+            total += itemTotal;
+            msg += `• ${i.name} (${i.variant}) x${i.qty} = Rs. ${itemTotal}\n`;
+        });
+        
+        msg += `\n💰 *TOTAL AMOUNT:* Rs. ${total}`;
+
+        const phone = "923016999013"; 
+        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    // Initial render
+    renderMenu();
+</script>
+
 
         // Initial render
         renderMenu();
